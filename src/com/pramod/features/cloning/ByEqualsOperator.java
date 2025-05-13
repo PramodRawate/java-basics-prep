@@ -1,24 +1,7 @@
 package com.pramod.features.cloning;
 
-class Person {
-    public String name;
-    public int age;
-
-    Person(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-
-    // Below constructor is copy constructor the usage of which is demonstrated in ByCopyConstructor.java
-    Person(Person anotherPerson) {
-        this.name = anotherPerson.name;
-        this.age = anotherPerson.age;
-    }
-
-    public void printPerson() {
-        System.out.println("Name: "+this.name+" | Age: "+this.age);
-    }
-}
+import java.sql.Array;
+import java.util.ArrayList;
 
 /**
  This example shows Java's object cloning using = operator.
@@ -28,16 +11,22 @@ class Person {
  **/
 public class ByEqualsOperator {
     public static void main(String[] args) {
-        Person p1 = new Person("Pramod", 29);
+        ArrayList<String> p1MobileNumbers = new ArrayList<>();
+        p1MobileNumbers.add("12345");
+        p1MobileNumbers.add("67890");
+        Person p1 = new Person("Pramod", 29, p1MobileNumbers);
         Person p2 = p1;
         p1.age = 40;
 
-        p1.printPerson();
-        p2.printPerson();
+        p1.printPersonDetails();
+        p2.printPersonDetails();
 
+        ArrayList<String> p2MobileNumbers = new ArrayList<>();
         p2.age = 60;
+        p2.mobileNumbers.add("11111");
+        p2.mobileNumbers.add("22222");
 
-        p1.printPerson();
-        p2.printPerson();
+        p1.printPersonDetails();
+        p2.printPersonDetails();
     }
 }
